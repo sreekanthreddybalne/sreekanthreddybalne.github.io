@@ -1,0 +1,24 @@
+<header>
+    <nav class="container">
+        <ul class="menu menu-left">
+            <li class="logo">
+                <a href="/" style="font-weight: 600">one<span class="brand">better</span>app</a>
+            </li>
+            {% for item in site.data.navigation.main %}
+            <li class="menu-item">
+                <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>
+                    <span class="fa fa-{{item.icon}}"></span>
+                    {{ item.name }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <ul class="menu ml-auto">
+            <li class="menu-item">
+                <a href="/hire-me">
+                    <span class="fa fa-certificate"></span> Hire me!
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>

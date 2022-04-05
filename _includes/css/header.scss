@@ -1,0 +1,41 @@
+header{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: top 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.65em;
+    
+    nav{
+        display: flex; 
+        width: 90%;
+    }
+    .logo{
+    }
+    .menu{
+        display: flex;
+        list-style: none;
+    }
+    ul, li{
+        margin: 0;
+    }
+    a{
+        color: #fff;
+        display: inline-block;
+        padding: 1em;
+        text-decoration: none;
+        &.current{
+            color: $brand-color;
+        }
+        .fa{
+            margin-right: 3px;
+        }
+    }
+    .logo .brand{
+        color: $brand-color;
+    }
+}
