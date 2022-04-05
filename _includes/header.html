@@ -6,7 +6,7 @@
             </li>
             {% for item in site.data.navigation.main %}
             <li class="menu-item">
-                <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>
+                <a href="{{ item.link | relative_url }}" {% if page.url == item.link %}class="current"{% endif %}>
                     <span class="fa fa-{{item.icon}}"></span>
                     {{ item.name }}
                 </a>

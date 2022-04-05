@@ -6,11 +6,11 @@
         <p class="name">By <strong>Sreekanth Reddy Balne</strong></p>
         <p class="bio">
             I'm a passionate software developer and researcher. I dig into Python, Django, PostgreSQL, AWS, RxJS, Typescript, Javascript, HTML, CSS, Terraform.
-            <a href="/about">Read more.</a>
+            <a href="{{'/about' | relative_url }}">Read more.</a>
         </p>
         <p class="contact">
             {% for item in site.data.contact %}
-            <a href="{{ item.link }}" target="_blank">
+            <a href="{{ item.link | relative_url }}" target="_blank">
                 <span class="{{item.icon_class}}"></span>
             </a>
             {% endfor %}
