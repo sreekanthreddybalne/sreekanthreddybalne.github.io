@@ -1,0 +1,20 @@
+# main links
+main:
+  - name: "Home"
+    link: /
+    icon: home
+  - name: "Articles"
+    link: /articles
+    icon: archive
+  - name: "Series"
+    link: /series/
+    icon: book
+  - name: "Snippets"
+    link: /snippets/
+    icon: code
+  - name: "Sponsor"
+    link: /sponser/
+    icon: bullhorn
+  - name: "RSS"
+    link: /rss/
+    icon: rss
