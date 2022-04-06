@@ -1,11 +1,12 @@
 ---
 title: What You Should Know About The Django User Model
-category: articles
+category: article
 layout: post
 published_date: "Jul 8, 2022"
 short_content: "In this tutorial I’m going to show you how I usually start and organize a new Django project nowadays. I’ve tried many different configurations and ways to organize the project, but for the past 4 years or so this has been consistently my go-to setup."
 image: https://simpleisbetterthancomplex.com/media/2021/07/featured-user.jpg
 tags: [ python, django ]
+comments: true
 ---
 
 ![a]({{page.image}})

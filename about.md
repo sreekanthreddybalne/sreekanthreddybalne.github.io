@@ -2,6 +2,42 @@
 layout: page
 title: About
 ---
-My name is Sreekanth Reddy Balne, I'm a software developer from India.  I hold a Bachelor of Technology in Computer Science and Engineering from University of Allahabad, U.P, India. My inspiration for choosing this field is Web Development. I always wanted to have a personal blog, and now that's fulfilled, currently my prime focus is into DevOps.
 
-I constantly dig into Python, Django, PostgreSQL, AWS, RxJS, Typescript, Javascript, HTML, CSS, Terraform.
+<style>
+    h6{
+        font-size: 1.2em;
+    }
+    td{
+        font-size: .9em;
+        padding: 5px 10px;
+    }
+    tr:nth-child(odd){
+        background: #f9f9f9;
+    }
+    ul{
+        list-style: square inside;
+        font-size: 0.9em;
+    }
+</style>
+
+Hi 👋
+
+I'm Sreekanth Reddy Balne. I'm currently working as a software engineer@Factset specialized in **Python**, **AWS**, **DevOps** and **Terraform**. I did my undergrad from *Allahabad University, UP, India*.
+
+I'm a **tech enthusiast**. I have experience in delivering solutions for interesting problems for startups and industry space.
+
+I love to code, listen to music, and play badminton.
+
+----
+
+###### Skills & Competencies
+
+
+| Programming Languages      | Python, Typescript, Javascript        |
+| Frameworks   | Django, FastAPI, NodeJS         |
+| Databases   | DynamoDB, Firestore, PostgreSQL, MySQL, SQLite, Redis        |
+| Web Technologies   | Angular 8/9, ReactJS, RxJS, jQuery, HTML5, CSS3, Bootstrap        |
+| Cloud Services   | AWS        |
+| Infrastructure as Code   | Terraform        |
+| Version Control   | Git        |
+| Others   | RESTful Services, Docker, Pub/Sub, Caching, ETL, CI/CD Tools, Kibana, Unit Testing, Regular Expressions, Distributed Software Systems, Serverless Architecture, Micro Services        |

@@ -63,4 +63,7 @@ whitelist:
   - jekyll-redirect-from
   - jekyll-feed
 
+webrick:
+  headers:
+    Cache-Control: max-age=31536000
   
