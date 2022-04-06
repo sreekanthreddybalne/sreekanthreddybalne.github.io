@@ -1,8 +1,17 @@
 ---
 layout: default
 ---
-<div class="page card container">
-    <h4 class="page-title">{{page.title}}</h4>
-    <hr class="sm">
-    {{content}}
+<div class="container">
+    <div class="row">
+        <div class="eight columns">
+            <div class="page card">
+                <h4 class="page-title">{{page.title}}</h4>
+                <hr class="sm">
+                {{content}}
+            </div>
+        </div>
+        <div class="four columns">
+            {% include sidebar.html %}
+        </div>
+    </div>
 </div>

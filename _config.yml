@@ -37,3 +37,10 @@ github_username:  jekyll
 collections:
   articles:
     output: true
+
+plugins:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
+  - jekyll-feed

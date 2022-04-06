@@ -20,4 +20,19 @@
     <div class="ta-center read-more">
         <a href="{{post.url | relative_url}}"><strong>READ MORE</strong></a>
     </div>
+    <hr class="post-hr">
+    <div class="row">
+        <div class="five columns post-tags">
+            {% for tag in post.tags %}
+                <span class="post-tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        <!-- <div class="seven columns post-share">
+            <div class="social">
+                {% for tag in post.tags %}
+                    <span>{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div> -->
+    </div>
 </div>
