@@ -15,6 +15,6 @@ main:
   # - name: "Sponsor"
   #   link: /sponsor/
   #   icon: bullhorn
-  # - name: "RSS"
-  #   link: /feed.xml
-  #   icon: rss
+  - name: "RSS"
+    link: /feed.xml
+    icon: rss

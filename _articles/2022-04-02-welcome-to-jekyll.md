@@ -1,14 +1,14 @@
 ---
 title: What You Should Know About The Django User Model
-category: article
+category: articles
 layout: post
 published_date: "Jul 8, 2022"
 short_content: "In this tutorial I’m going to show you how I usually start and organize a new Django project nowadays. I’ve tried many different configurations and ways to organize the project, but for the past 4 years or so this has been consistently my go-to setup."
-featured_image: https://simpleisbetterthancomplex.com/media/2021/07/featured-user.jpg
+image: https://simpleisbetterthancomplex.com/media/2021/07/featured-user.jpg
 tags: [ python, django ]
 ---
 
-![a]({{page.featured_image}})
+![a]({{page.image}})
 
 The `goal` of this article is to discuss the caveats of the default Django user model implementation and also to give you some advice on how to address them. It is important to know the limitations of the current implementation so to avoid the most common pitfalls.
 w
