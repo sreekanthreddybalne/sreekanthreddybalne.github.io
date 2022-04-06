@@ -4,8 +4,9 @@
 .masthead{
     position: relative;
     display: flex;
-    height: 50vh;
+    height: 300px;
     text-align: center;
+    background: #fff;
     .bg-image{
         position: absolute;
         top: 0;
@@ -15,9 +16,15 @@
         background-image: url(/assets/media/pythonbg.jpg);
         background:linear-gradient(0deg, rgb(255, 255, 255), rgba(255, 255, 255, 0.66)), url(/assets/media/pythonbg.jpg);
         background-position: center;
+        background-size: 70%;
+        background-repeat: no-repeat;
+        @media screen and (max-width: $mobile) {
+            background-size: 200%;
+        }
     }
     .container{
         height: 100%;
+        padding: 0 1em;
     }
     img{
         width: 100%;
@@ -30,10 +37,18 @@
         margin-bottom: 0.25em;
         font-size: 3em;
         font-family: 'Libre Barcode 39 Text', cursive;
+
+        @media screen and (max-width: $mobile) {
+            font-size: 2em;
+            margin-top: 2em;
+        }
     }
     h5{
         font-size: 2em;
         color: #000;
         font-family: 'Fira Code', monospace;
+        @media screen and (max-width: $mobile) {
+            font-size: 1em;
+        }
     }
 }

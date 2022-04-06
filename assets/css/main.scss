@@ -5,6 +5,10 @@
 
 // onebetterapp styling
 $brand-color : #1EAEDB;
+$small: 300px;
+$mobile: 768px;
+$medium: 900px;
+
 {% include css/base.scss %}
 {% include css/header.scss %}
 {% include css/post.scss %}

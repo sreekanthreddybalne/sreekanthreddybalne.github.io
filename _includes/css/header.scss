@@ -38,4 +38,18 @@ header{
     .logo .brand{
         color: $brand-color;
     }
+    ul.nav-toggle{
+        display: none;
+    }
+    @media screen and (max-width: $mobile) {
+        nav > ul:not(.brand, .nav-toggle){
+            display: none;
+        }
+        ul.nav-toggle{
+            display: block;
+        }
+        nav.show-for-mobile > ul{
+            display: block;
+        }
+    }
 }

@@ -1,9 +1,11 @@
 <header>
     <nav class="container">
-        <ul class="menu menu-left">
+        <ul class="menu menu-left brand">
             <li class="logo">
-                <a href="{{'/' | relative_url }}" style="font-weight: 600">one<span class="brand">better</span>app</a>
+                <a href="{{'/' | relative_url }}" style="font-weight: 600">aspire<span class="brand">to</span>inspire</a>
             </li>
+        </ul>
+        <ul class="menu menu-left">
             {% for item in site.data.navigation.main %}
             <li class="menu-item">
                 <a href="{{ item.link | relative_url }}" {% if page.url == item.link %}class="current"{% endif %}>
@@ -17,6 +19,13 @@
             <li class="menu-item">
                 <a href="/hire-me">
                     <span class="fa fa-certificate"></span> Hire me!
+                </a>
+            </li>
+        </ul>
+        <ul class="menu ml-auto nav-toggle">
+            <li class="menu-item">
+                <a href="javascript:void(0);">
+                    <span class="fa fa-bars"></span>
                 </a>
             </li>
         </ul>
