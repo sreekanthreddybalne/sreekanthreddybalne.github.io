@@ -1,0 +1,22 @@
+<div class="experience">
+    {% for exp in site.data.experience %}
+        <div class="exp-item row">
+            <div class="two columns">
+                <div class="exp-icon">
+                    <img src="{{exp.icon | relative_url}}" alt="">
+                </div>
+            </div>
+            <div class="exp-content ten columns">
+                <div class="exp-period">
+                    {{exp.period}}
+                </div>
+                <div class="exp-title">
+                    {{exp.title}}
+                </div>
+                <div class="exp-company-name">
+                    {{exp.company}}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

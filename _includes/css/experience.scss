@@ -1,0 +1,26 @@
+.exp-item{
+    display: flex;
+    margin-bottom: 1em;
+    font-family: 'Open Sans', sans-serif;
+
+    .exp-icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    .exp-period{
+        text-transform: uppercase;
+        font-size: 0.8em;
+        color: #888;
+        font-weight: 600;
+    }
+    .exp-title{
+        font-weight: 700;
+        line-height: 1;
+    }
+    .exp-company-name{
+        font-size: 0.85em;
+        font-weight: 500;
+    }
+}
