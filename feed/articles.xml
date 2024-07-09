@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://sreekanthreddybalne.github.io/feed/articles.xml" rel="self" type="application/atom+xml" /><link href="https://sreekanthreddybalne.github.io/" rel="alternate" type="text/html" /><updated>2024-07-09T04:43:53+00:00</updated><id>https://sreekanthreddybalne.github.io/feed/articles.xml</id><title type="html">Aspire to Inspire | Articles</title><subtitle>Stories about Python, AWS and Terraform</subtitle><author><name>https://www.linkedin.com/in/sbalne/</name></author><entry><title type="html">What You Should Know About The Django User Model</title><link href="https://sreekanthreddybalne.github.io/articles/2022-04-02-welcome-to-jekyll.html" rel="alternate" type="text/html" title="What You Should Know About The Django User Model" /><published>2022-04-02T00:00:00+00:00</published><updated>2022-04-02T00:00:00+00:00</updated><id>https://sreekanthreddybalne.github.io/articles/welcome-to-jekyll</id><content type="html" xml:base="https://sreekanthreddybalne.github.io/articles/2022-04-02-welcome-to-jekyll.html"><![CDATA[<p><img src="https://simpleisbetterthancomplex.com/media/2021/07/featured-user.jpg" alt="a" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">goal</code> of this article is to discuss the caveats of the default Django user model implementation and also to give you some advice on how to address them. It is important to know the limitations of the current implementation so to avoid the most common pitfalls.
+w</p>
+<blockquote>
+  <p>Something to keep in mind is that the Django user model is heavily based on its initial implementation that is at least 16 years old. Because user and authentication is a core part of the majority of the web applications using Django, most of its quirks persisted on the subsequent releases so to maintain backward compatibility.</p>
+</blockquote>
+
+<p>The good news is that Django offers many ways to override and customize its default implementation so to fit your application needs. But some of those changes must be done right at the beginning of the project, otherwise it would be too much of a hassle to change the database structure after your application is in production.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">get_user_model</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.backends</span> <span class="kn">import</span> <span class="n">ModelBackend</span>
+
+
+<span class="k">class</span> <span class="nc">CaseInsensitiveModelBackend</span><span class="p">(</span><span class="n">ModelBackend</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">UserModel</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">username</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">UserModel</span><span class="p">.</span><span class="n">USERNAME_FIELD</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">case_insensitive_username_field</span> <span class="o">=</span> <span class="s">'{}__iexact'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">UserModel</span><span class="p">.</span><span class="n">USERNAME_FIELD</span><span class="p">)</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">UserModel</span><span class="p">.</span><span class="n">_default_manager</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">case_insensitive_username_field</span><span class="p">:</span> <span class="n">username</span><span class="p">})</span>
+        <span class="k">except</span> <span class="n">UserModel</span><span class="p">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="c1"># Run the default password hasher once to reduce the timing
+</span>            <span class="c1"># difference between an existing and a non-existing user (#20760).
+</span>            <span class="n">UserModel</span><span class="p">().</span><span class="n">set_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">user</span><span class="p">.</span><span class="n">check_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">.</span><span class="n">user_can_authenticate</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">user</span>
+</code></pre></div></div>
+
+<p><strong>settings.py</strong></p>
+
+<p>Please note that ‘mysite.core.backends.CaseInsensitiveModelBackend’ must be changed to the valid path, where you created the backends.py module.</p>
+
+<p>It is important to have handled all conflicting users before changing the authentication backend because otherwise it could raise a 500 exception MultipleObjectsReturned.</p>
+
+<h5 id="fixing-the-username-validation-to-use-accept-ascii-letters-only">Fixing the username validation to use accept ASCII letters only</h5>
+
+<p>Here we can borrow the built-in UsernameField and customize it to append the ASCIIUsernameValidator to the list of validators:</p>]]></content><author><name>https://www.linkedin.com/in/sbalne/</name></author><category term="article" /><category term="python" /><category term="django" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://simpleisbetterthancomplex.com/media/2021/07/featured-user.jpg" /><media:content medium="image" url="https://simpleisbetterthancomplex.com/media/2021/07/featured-user.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
