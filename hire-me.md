@@ -24,7 +24,7 @@ redirect_from:
 
 Hi 👋
 
-I'm Sreekanth Reddy Balne. I'm currently working as a software engineer@Factset specialized in **Python**, **AWS**, **DevOps** and **Terraform**. I did my undergrad from *Allahabad University, UP, India*.
+I'm Sreekanth Reddy Balne. I'm currently working as a software engineer@*Limit* specialized in **Python**, **AWS**, **DevOps** and **Terraform**. I did my undergrad from *Allahabad University, UP, India*.
 
 I'm a **tech enthusiast**. I have experience in delivering solutions for interesting problems for startups and industry space.
 
